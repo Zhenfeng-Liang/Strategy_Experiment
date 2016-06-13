@@ -12,7 +12,7 @@ class UtilityCalculator:
 
 		if self.uType == "HARA" or self.uType == "CRRA":
 			self.kappa = self.oneOverGamma - 1.0
-		else if self.uType == "CARA":
+		elif self.uType == "CARA":
 			self.kappa = -1.0
 
 	def Au(self, v):
