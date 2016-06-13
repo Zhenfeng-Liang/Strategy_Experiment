@@ -17,19 +17,19 @@ class Model:
     	elif self.modelType == "LogNormal":
     		res = self.mu * x
 
-    	return res
+		return res
 
     def driftDer(self, x, i):
 
 		F = len(x)
 		der = np.zeros(F)
 
-    	if self.modelType == "MeanReverting" or self.modelType == "CIR":
-    		der[i] = -self.lam[i]
-    	elif self.modelType == "LogNormal":
+		if self.modelType == "MeanReverting" or self.modelType == "CIR":
+			der[i] = -self.lam[i]
+		elif self.modelType == "LogNormal":
 			der[i] = self.mu[i]    		 
     	
-    	return der
+		return der
 
     def driftDer2(self, x, i, j):
 
@@ -50,15 +50,12 @@ class Model:
     	return b
 
     def diffDer(self, x, i):
-
     	
     	# Assuming only one random driver for each asset
     	F = len(x)
     	der = np.zeros((F, F))
 
-    	if self.modelType == "MeanReverting":
-    		# Do nothing
-    	elif self.modelType == "LogNormal":
+    	if self.modelType == "LogNormal":
     		der[i][i] = self.vol[i]
     	elif self.modelType == "CIR":
     		der[i][i] = 0.5 * self.vol[i] * (x[i]**-0.5)
@@ -74,7 +71,5 @@ class Model:
 
     		if i == j:
     			der2[i][i] = -0.25 * self.vol[i] * (x[i] ** -1.5)
-    	else:
-    		# Do nothing for mean reverting and lognormal model
 
     	return der2
