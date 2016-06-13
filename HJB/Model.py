@@ -14,7 +14,7 @@ class Model:
 
     	if self.modelType == "MeanReverting" or self.modelType == "CIR":
     		res = self.lam *  (self.mu - x)
-    	else if self.modelType == "LogNormal":
+    	elif self.modelType == "LogNormal":
     		res = self.mu * x
 
     	return res
@@ -26,7 +26,7 @@ class Model:
 
     	if self.modelType == "MeanReverting" or self.modelType == "CIR":
     		der[i] = -self.lam[i]
-    	else if self.modelType == "LogNormal":
+    	elif self.modelType == "LogNormal":
 			der[i] = self.mu[i]    		 
     	
     	return der
@@ -42,9 +42,9 @@ class Model:
 
     	if self.modelType == "MeanReverting":
     		b = np.diag(self.vol)
-    	else if self.modelType == "LogNormal":
+    	elif self.modelType == "LogNormal":
     		b = np.diag(self.vol * x)
-    	else if self.modelType == "CIR":
+    	elif self.modelType == "CIR":
     		b = np.diag(self.vol * np.sqrt(x))
 
     	return b
@@ -58,9 +58,9 @@ class Model:
 
     	if self.modelType == "MeanReverting":
     		# Do nothing
-    	else if self.modelType == "LogNormal":
+    	elif self.modelType == "LogNormal":
     		der[i][i] = self.vol[i]
-    	else if self.modelType == "CIR":
+    	elif self.modelType == "CIR":
     		der[i][i] = 0.5 * self.vol[i] * (x[i]**-0.5)
 
     	return der

@@ -19,9 +19,9 @@ class UtilityCalculator:
 
 		if self.uType == "CARA":
 			res = self.gamma
-		else if self.uType == "CRRA":
+		elif self.uType == "CRRA":
 			res = self.gamma / v
-		else if self.uType == "HARA":
+		elif self.uType == "HARA":
 			res = self.b / (self.a + self.b / self.gamma * v) 
 
 		return res
@@ -30,9 +30,9 @@ class UtilityCalculator:
 
 		if self.uType == "CARA":
 			res = -exp(-self.gamma * v) / self.gamma
-		else if self.uType == "CRRA":
+		elif self.uType == "CRRA":
 			res = v ** (1.0 - self.gamma) / (1.0 - self.gamma)
-		else if self.uType == "HARA":
+		elif self.uType == "HARA":
 			res = self.gamma / (1.0 - self.gamma) \
 			* (self.a + self.b / self.gamma * v) ** (1.0 - self.gamma)
 
@@ -42,9 +42,9 @@ class UtilityCalculator:
 
 		if self.uType == "CARA":
 			res = exp(-self.gamma * v)
-		else if self.uType == "CRRA":
+		elif self.uType == "CRRA":
 			res = v ** (-self.gamma)
-		else if self.uType == "HARA":
+		elif self.uType == "HARA":
 			res = self.b * (self.a + self.b / self.gamma * v) ** (-self.gamma)
 
 		return res
@@ -53,9 +53,9 @@ class UtilityCalculator:
 
 		if self.uType == "CARA":
 			res = -self.gamma * exp(-self.gamma * v)
-		else if self.uType == "CRRA":
+		elif self.uType == "CRRA":
 			res = -self.gamma * v ** (-self.gamma - 1.0)
-		else if self.uType == "HARA":
+		elif self.uType == "HARA":
 			res = -self.b ** 2 \
 			* (self.a + self.b / self.gamma * v) ** (-self.gamma - 1.0)
 
