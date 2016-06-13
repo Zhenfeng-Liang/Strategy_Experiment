@@ -21,15 +21,15 @@ class Model:
 
     def driftDer(self, x, i):
 
-		F = len(x)
-		der = np.zeros(F)
+    	F = len(x)
+    	der = np.zeros(F)
 
-		if self.modelType == "MeanReverting" or self.modelType == "CIR":
-			der[i] = -self.lam[i]
-		elif self.modelType == "LogNormal":
-			der[i] = self.mu[i]    		 
+    	if self.modelType == "MeanReverting" or self.modelType == "CIR":
+    		der[i] = -self.lam[i]
+    	elif self.modelType == "LogNormal":
+    		der[i] = self.mu[i]    		 
     	
-		return der
+    	return der
 
     def driftDer2(self, x, i, j):
 
